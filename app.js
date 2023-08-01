@@ -111,7 +111,7 @@ app.post("/delete", function(req,res){
   else{
     //we need to use $Pull method to delete this and Model.findOneAndUpdate method helps us
     console.log("entered the else")
-    List.findOneAndUpdate({ name: listName }, { $pull: { items: { _id: checkedItemId }  } })
+    List.findOneAndUpdate({ name: listName }, { $pull: { item: { _id: checkedItemId }  } })
       .then(function(foundlist){
         console.log(foundlist)
         
@@ -153,7 +153,7 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 app.listen(port, function() {
   console.log("Server started on port 3000");
 });
